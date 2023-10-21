@@ -202,9 +202,10 @@ def get(req_handler, routes):
                 req_handler.wfile.write(bytes(data,  encoding = 'utf-8'))
                 return
 
-def run(routes, host = '0.0.0.0', port = 8080):
+def run(routes, host = '0.0.0.0', port = 2020):
     """ Runs a class as a server whose methods have been decorated with
         @route.
+        Changing port number as 8080 is occupied
     """
     class RequestHandler(http.server.BaseHTTPRequestHandler):
         def log_message(self, *args, **kwargs):
@@ -215,7 +216,7 @@ def run(routes, host = '0.0.0.0', port = 8080):
     thread = threading.Thread(target = server.serve_forever)
     thread.daemon = True
     thread.start()
-    print ('HTTP server started on port 8080')
+    print ('HTTP server started on port 2020')
     while True:
         from time import sleep
         sleep(1)
